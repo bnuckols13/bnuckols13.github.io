@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brian Nuckols — Investigative Journalist</title>
+<meta name="description" content="Brian Nuckols is an investigative journalist in Pittsburgh who reports accountability stories from public records and data, and publishes the evidence as open-source, one-command-reproducible packages.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brian Nuckols — Investigative Journalist">
+<meta property="og:description" content="Accountability journalism from public records and data, published as reproducible open-source packages.">
+<meta property="og:url" content="https://bnuckols13.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235b4b8a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23fbfaf7' text-anchor='middle'%3EBN%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#fbfaf7; --card:#ffffff; --ink:#1a1a1a; --soft:#4a4a4a; --faint:#7d766a;
+    --rule:#d9d4c8; --rule-soft:#ece7dd; --accent:#5b4b8a; --accent-soft:#efeaf6;
+    --water:#5b4b8a; --zoning:#2a78d6; --airport:#1c5cab; --chipbg:#f1ece2;
+    --shadow:0 1px 2px rgba(40,32,20,.05);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"Cascadia Code",Consolas,ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#14130e; --card:#1c1a14; --ink:#ece7dd; --soft:#b3aa99; --faint:#8a8272;
+      --rule:#37322a; --rule-soft:#2a2620; --accent:#a99ce8; --accent-soft:#241f33;
+      --water:#a99ce8; --zoning:#6aa6ee; --airport:#6aa6ee; --chipbg:#26221b;
+      --shadow:0 1px 2px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#14130e; --card:#1c1a14; --ink:#ece7dd; --soft:#b3aa99; --faint:#8a8272;
+    --rule:#37322a; --rule-soft:#2a2620; --accent:#a99ce8; --accent-soft:#241f33;
+    --water:#a99ce8; --zoning:#6aa6ee; --airport:#6aa6ee; --chipbg:#26221b;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+  :root[data-theme="light"]{
+    --paper:#fbfaf7; --card:#ffffff; --ink:#1a1a1a; --soft:#4a4a4a; --faint:#7d766a;
+    --rule:#d9d4c8; --rule-soft:#ece7dd; --accent:#5b4b8a; --accent-soft:#efeaf6;
+    --water:#5b4b8a; --zoning:#2a78d6; --airport:#1c5cab; --chipbg:#f1ece2;
+    --shadow:0 1px 2px rgba(40,32,20,.05);
+  }
+  *{box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+    line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.4rem}
+  a{color:inherit}
+  .kick{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent)}
+  h1,h2,h3{font-weight:600;letter-spacing:-.012em;line-height:1.12}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--rule-soft)}
+  .nav .wrap{display:flex;align-items:center;gap:1rem;height:56px}
+  .brand{font-family:var(--sans);font-weight:700;letter-spacing:.01em;font-size:.98rem;text-decoration:none;white-space:nowrap}
+  .brand b{color:var(--accent)}
+  nav.links{margin-left:auto;display:flex;gap:.2rem;align-items:center}
+  nav.links a{font-family:var(--sans);font-size:.82rem;color:var(--soft);text-decoration:none;
+    padding:.45rem .6rem;border-radius:7px}
+  nav.links a:hover{color:var(--ink);background:var(--rule-soft)}
+  .toggle{font-family:var(--sans);font-size:.8rem;cursor:pointer;border:1px solid var(--rule);
+    background:var(--card);color:var(--soft);border-radius:999px;padding:.35rem .6rem;margin-left:.3rem}
+  @media (max-width:680px){nav.links a:not(.cta){display:none}}
+
+  /* hero */
+  .hero{padding:4.2rem 0 2.6rem;border-bottom:1px solid var(--rule-soft)}
+  .hero h1{font-size:clamp(2.4rem,6vw,3.6rem);margin:.5rem 0 .1rem}
+  .hero .lede{font-size:clamp(1.12rem,2.4vw,1.4rem);color:var(--soft);max-width:40ch;margin:.7rem 0 0;line-height:1.4}
+  .hero .sub{font-family:var(--sans);font-size:.9rem;color:var(--soft);max-width:60ch;margin:1.1rem 0 0;line-height:1.55}
+  .hero .meta{margin:1.5rem 0 0;display:flex;flex-wrap:wrap;gap:.5rem}
+  .hero .meta a{font-family:var(--sans);font-size:.82rem;text-decoration:none;color:var(--soft);
+    border:1px solid var(--rule);border-radius:999px;padding:.4rem .8rem;background:var(--card)}
+  .hero .meta a:hover{border-color:var(--accent);color:var(--ink)}
+  .hero .meta a.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  :root[data-theme="dark"] .hero .meta a.primary{color:#14130e}
+  @media (prefers-color-scheme:dark){.hero .meta a.primary{color:#14130e}}
+
+  section{padding:3.4rem 0}
+  .sec-head{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.4rem}
+  h2.section-title{font-size:1.02rem;font-family:var(--sans);font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase}
+  h2.section-title::after{content:'';display:block;height:6px;width:66px;margin-top:.55rem;
+    background:var(--accent);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E") repeat-x;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E") repeat-x}
+  .sec-note{font-family:var(--sans);font-size:.85rem;color:var(--faint);margin:.2rem 0 1.6rem;max-width:64ch}
+
+  /* featured */
+  .feat{display:grid;gap:1.1rem}
+  .fcard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--pkg,var(--accent));
+    border-radius:12px;padding:1.5rem 1.6rem;box-shadow:var(--shadow);transition:transform .12s,border-color .12s,box-shadow .12s}
+  .fcard:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(40,32,20,.09)}
+  .fcard .kick{color:var(--pkg,var(--accent))}
+  .fcard h3{font-size:1.5rem;margin:.4rem 0 .3rem}
+  .fcard .dek{color:var(--soft);font-size:1.04rem;margin:0 0 1rem;max-width:52ch}
+  .statrow{display:flex;flex-wrap:wrap;gap:1.4rem;padding:.9rem 0;border-top:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule-soft);margin-bottom:1rem}
+  .stat{display:flex;flex-direction:column;gap:.1rem}
+  .stat .n{font-family:var(--sans);font-size:1.5rem;font-weight:700;color:var(--pkg,var(--accent));
+    font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .stat .l{font-family:var(--sans);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
+  .fcard .find{font-size:.98rem;color:var(--ink);margin:0 0 1.1rem;max-width:60ch}
+  .actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+  .btn{font-family:var(--sans);font-size:.85rem;font-weight:600;text-decoration:none;border-radius:8px;
+    padding:.55rem .9rem;border:1px solid var(--pkg,var(--accent));color:var(--pkg,var(--accent));background:transparent}
+  .btn.solid{background:var(--pkg,var(--accent));color:#fff}
+  :root[data-theme="dark"] .btn.solid{color:#14130e}
+  @media (prefers-color-scheme:dark){.btn.solid{color:#14130e}}
+  .btn:hover{filter:brightness(1.06);text-decoration:none}
+  .pill{font-family:var(--mono);font-size:.72rem;color:var(--faint);background:var(--chipbg);
+    border-radius:999px;padding:.35rem .7rem;margin-left:auto}
+  @media (max-width:560px){.pill{margin-left:0}}
+
+  /* filter chips + article grid */
+  .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1.4rem}
+  .chip{font-family:var(--sans);font-size:.8rem;cursor:pointer;border:1px solid var(--rule);
+    background:var(--card);color:var(--soft);border-radius:999px;padding:.4rem .8rem}
+  .chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:.9rem}
+  .acard{display:block;background:var(--card);border:1px solid var(--rule);border-radius:10px;
+    padding:1.1rem 1.2rem;text-decoration:none;transition:transform .12s,border-color .12s;box-shadow:var(--shadow)}
+  .acard:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .acard .out{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--accent)}
+  .acard h4{font-family:var(--serif);font-weight:600;font-size:1.08rem;line-height:1.25;margin:.35rem 0 .35rem}
+  .acard p{font-family:var(--sans);font-size:.83rem;color:var(--faint);margin:0}
+  .acard .arw{font-family:var(--sans);font-size:.8rem;color:var(--accent);margin-top:.6rem;display:inline-block}
+
+  /* simple lists */
+  .list{list-style:none;padding:0;margin:0;display:grid;gap:.1rem}
+  .list li{padding:.7rem 0;border-bottom:1px solid var(--rule-soft);display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap}
+  .list li .out{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--accent);min-width:9rem}
+  .list li a{text-decoration:none;font-size:1.02rem}
+  .list li a:hover{color:var(--accent);text-decoration:underline}
+  .list li.plain{color:var(--soft)}
+  details.more{margin-top:.4rem}
+  details.more>summary{font-family:var(--sans);font-size:.85rem;color:var(--accent);cursor:pointer;
+    padding:.5rem 0;list-style:none}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::before{content:'▸ ';}
+  details.more[open]>summary::before{content:'▾ ';}
+
+  /* experience timeline */
+  .exp{display:grid;gap:0}
+  .job{padding:1.1rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:8.5rem 1fr;gap:1rem}
+  .job .when{font-family:var(--sans);font-size:.78rem;color:var(--faint);padding-top:.2rem}
+  .job h4{margin:0 0 .1rem;font-size:1.1rem;font-weight:600}
+  .job .org{font-family:var(--sans);font-size:.82rem;color:var(--accent);margin:0 0 .4rem}
+  .job p{margin:0;font-size:.95rem;color:var(--soft)}
+  @media (max-width:560px){.job{grid-template-columns:1fr;gap:.2rem}.job .when{order:-1}}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem}
+  @media (max-width:680px){.two{grid-template-columns:1fr;gap:1.4rem}}
+  .skills{list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
+  .skills li{font-size:.98rem;padding-left:1.1rem;position:relative}
+  .skills li::before{content:'';position:absolute;left:0;top:.62em;width:.5rem;height:.5rem;border-radius:50%;background:var(--accent)}
+  .edu li{font-size:1rem;padding:.35rem 0}
+  .edu b{font-weight:600}
+  .edu span{font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+
+  footer{border-top:1px solid var(--rule);padding:3rem 0 4rem;margin-top:1rem}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}
+  footer .flinks a{font-family:var(--sans);font-size:.85rem;text-decoration:none;color:var(--soft);
+    border:1px solid var(--rule);border-radius:999px;padding:.4rem .8rem;background:var(--card)}
+  footer .flinks a:hover{border-color:var(--accent);color:var(--ink)}
+  footer .fine{font-family:var(--sans);font-size:.78rem;color:var(--faint);margin-top:1rem;line-height:1.6}
+  footer .fine a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Brian <b>Nuckols</b></a>
+    <nav class="links">
+      <a href="#featured">Featured</a>
+      <a href="#journalism">Journalism</a>
+      <a href="#essays">Essays</a>
+      <a href="#experience">Experience</a>
+      <a class="cta" href="#contact">Contact</a>
+      <button class="toggle" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <section class="hero">
+    <div class="kick">Investigative journalist · Pittsburgh &amp; western Pennsylvania</div>
+    <h1>Brian Nuckols</h1>
+    <p class="lede">I report accountability stories from public records and data.</p>
+    <p class="sub">Then I publish the evidence as open-source packages a reader can re-derive with one command, so the reporting can be checked line by line rather than taken on trust. My work has run in PublicSource, the West Hills Gazette, Jacobin, Pirate Wires, and the Seattle Times.</p>
+    <div class="meta">
+      <a class="primary" href="#featured">See the reproducible records</a>
+      <a href="mailto:brianjnuckols@gmail.com">Email</a>
+      <a href="https://substack.com/@briannuckols" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/briannuckols13" target="_blank" rel="noopener">X</a>
+      <a href="https://briannuckols.com" target="_blank" rel="noopener">briannuckols.com</a>
+    </div>
+  </section>
+
+  <section id="featured">
+    <div class="sec-head"><h2 class="section-title">Featured work</h2></div>
+    <p class="sec-note">Three reproducible records. Each pairs a published story with an open-source package that re-derives every figure from hashed source documents.</p>
+    <div class="feat">
+
+      <article class="fcard" style="--pkg:var(--water)">
+        <div class="kick">PublicSource · December 2025</div>
+        <h3>The Pittsburgh Water Deliberation Record</h3>
+        <p class="dek">Two years inside the board that runs Pittsburgh's water, coded vote by vote from the public minutes.</p>
+        <div class="statrow">
+          <div class="stat"><span class="n">228</span><span class="l">votes coded</span></div>
+          <div class="stat"><span class="n">0</span><span class="l">dissents</span></div>
+          <div class="stat"><span class="n">$871.25M</span><span class="l">authorized</span></div>
+          <div class="stat"><span class="n">69%</span><span class="l">peer unanimity</span></div>
+        </div>
+        <p class="find">223 of 228 resolutions passed unanimously while the board prepared to raise rates. At the first meeting after the story ran, the board asked about 40 questions, roughly seven times its two-year average, and issued a stop-work order.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://bnuckols13.github.io/pittsburgh-water-deliberation-record/" target="_blank" rel="noopener">Reproducible record →</a>
+          <a class="btn" href="https://www.publicsource.org/pittsburgh-water-board-unanimous-votes-oversight/" target="_blank" rel="noopener">Published story →</a>
+          <span class="pill">reproduces with python check.py</span>
+        </div>
+      </article>
+
+      <article class="fcard" style="--pkg:var(--zoning)">
+        <div class="kick">PublicSource · September 2025</div>
+        <h3>The Pittsburgh Inclusionary Zoning Record</h3>
+        <p class="dek">Six years of debate, and no agreed count of the affordable units the rule produced. So I built the count.</p>
+        <div class="statrow">
+          <div class="stat"><span class="n">35</span><span class="l">units built</span></div>
+          <div class="stat"><span class="n">16</span><span class="l">under construction</span></div>
+          <div class="stat"><span class="n">100+</span><span class="l">proposed</span></div>
+          <div class="stat"><span class="n">3</span><span class="l">projects downsized</span></div>
+        </div>
+        <p class="find">Three projects were shrunk to 19 units apiece, one below the 20-unit line that triggers the mandate. The record separates what is built from what is merely claimed.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://bnuckols13.github.io/pittsburgh-inclusionary-zoning-record/" target="_blank" rel="noopener">Reproducible record →</a>
+          <a class="btn" href="https://www.publicsource.org/pittsburgh-debates-gainey-inclusionary-zoning-proposal/" target="_blank" rel="noopener">Published story →</a>
+          <span class="pill">reproduces with python check.py</span>
+        </div>
+      </article>
+
+      <article class="fcard" style="--pkg:var(--airport)">
+        <div class="kick">West Hills Gazette · October 2025</div>
+        <h3>The Pittsburgh Airport Terminal Record</h3>
+        <p class="dek">A $1.75 billion terminal the Airport Authority would not fully cost out at its own ribbon-cutting. The audited record fills in the rest.</p>
+        <div class="statrow">
+          <div class="stat"><span class="n">+54%</span><span class="l">cost, 2017 to 2025</span></div>
+          <div class="stat"><span class="n">$1.25B</span><span class="l">bonds outstanding</span></div>
+          <div class="stat"><span class="n">$2.5B</span><span class="l">debt service to 2056</span></div>
+          <div class="stat"><span class="n">15M / 9.95M</span><span class="l">built for / used</span></div>
+        </div>
+        <p class="find">The Authority named two grants and stopped counting. The 2024 audit shows $2.5 billion in debt service running to 2056, for a terminal built for up to 15 million passengers against 2024 demand under 10 million.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://bnuckols13.github.io/pittsburgh-airport-terminal-record/" target="_blank" rel="noopener">Reproducible record →</a>
+          <a class="btn" href="https://westhillsgazette.com/pittsburgh-airport-cuts-ribbon-on-1-75-billion-terminal/" target="_blank" rel="noopener">Published story →</a>
+          <span class="pill">reproduces with python check.py</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="journalism">
+    <div class="sec-head"><h2 class="section-title">Selected journalism</h2></div>
+    <p class="sec-note">Reported accountability pieces. Filter by beat.</p>
+    <div class="chips" id="chips">
+      <button class="chip on" data-f="all">All</button>
+      <button class="chip" data-f="pittsburgh">Pittsburgh</button>
+      <button class="chip" data-f="infrastructure">Infrastructure</button>
+      <button class="chip" data-f="politics">Politics</button>
+      <button class="chip" data-f="tech">Tech &amp; policy</button>
+    </div>
+    <div class="grid" id="jgrid">
+      <a class="acard" data-topic="pittsburgh" href="https://www.publicsource.org/pittsburgh-water-board-unanimous-votes-oversight/" target="_blank" rel="noopener">
+        <div class="out">PublicSource</div>
+        <h4>Two years, zero &lsquo;no&rsquo; votes on Pittsburgh Water board as rate hike looms</h4>
+        <p>A coded record of every board vote, and the oversight gap it exposed.</p>
+        <span class="arw">Read →</span>
+      </a>
+      <a class="acard" data-topic="pittsburgh" href="https://www.publicsource.org/pittsburgh-water-board-transparency-rate-hike/" target="_blank" rel="noopener">
+        <div class="out">PublicSource</div>
+        <h4>Pittsburgh Water board asks questions after transparency investigation</h4>
+        <p>The follow-up: 40 questions at the next meeting, and a stop-work order.</p>
+        <span class="arw">Read →</span>
+      </a>
+      <a class="acard" data-topic="pittsburgh" href="https://www.publicsource.org/pittsburgh-regional-transit-avoids-service-cuts-waterfront/" target="_blank" rel="noopener">
+        <div class="out">PublicSource</div>
+        <h4>Routes spared, but upgrades nixed in Pittsburgh Regional Transit funding fix</h4>
+        <p>What the transit budget deal saved, and what it quietly cut.</p>
+        <span class="arw">Read →</span>
+      </a>
+      <a class="acard" data-topic="pittsburgh infrastructure" href="https://westhillsgazette.com/pittsburgh-airport-cuts-ribbon-on-1-75-billion-terminal/" target="_blank" rel="noopener">
+        <div class="out">West Hills Gazette</div>
+        <h4>Pittsburgh Airport cuts ribbon on $1.75 billion terminal</h4>
+        <p>The debt the Authority would not total, pulled from its own audit.</p>
+        <span class="arw">Read →</span>
+      </a>
+      <a class="acard" data-topic="politics" href="https://jacobin.com/author/brian-nuckols" target="_blank" rel="noopener">
+        <div class="out">Jacobin</div>
+        <h4>The Curious Case of Steve Bannon&rsquo;s Tactics</h4>
+        <p>How aligned incentives, not a plot, produce a coordinated outcome.</p>
+        <span class="arw">Read →</span>
+      </a>
+      <a class="acard" data-topic="infrastructure" href="https://www.piratewires.com/p/100-years-477-billion-new-yorks-second-avenue-subway-disaster" target="_blank" rel="noopener">
+        <div class="out">Pirate Wires</div>
+        <h4>100 Years, $4.77 Billion: New York&rsquo;s Second Avenue Subway Disaster</h4>
+        <p>A century of cost overruns on one line, read against the receipts.</p>
+        <span class="arw">Read →</span>
+      </a>
+      <a class="acard" data-topic="tech" href="https://www.seattletimes.com/author/brian-nuckols/" target="_blank" rel="noopener">
+        <div class="out">Seattle Times</div>
+        <h4>When a chatbot causes harm, we need to impose consequences</h4>
+        <p>The accountability gap in AI product liability.</p>
+        <span class="arw">Read →</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="essays">
+    <div class="sec-head"><h2 class="section-title">Essays &amp; commentary</h2></div>
+    <ul class="list">
+      <li><span class="out">Free the People</span><a href="https://freethepeople.org/fda-kills-menthol-ban-a-triumph-for-harm-reduction/" target="_blank" rel="noopener">FDA Kills Menthol Ban: A Triumph for Harm Reduction</a></li>
+      <li><span class="out">Free the People</span><a href="https://freethepeople.org/the-overreach-of-flavor-bans-why-authority-doesnt-equal-policy-wisdom/" target="_blank" rel="noopener">The Overreach of Flavor Bans: Why Authority Doesn&rsquo;t Equal Policy Wisdom</a></li>
+      <li><span class="out">Pittsburgh Tribune-Review</span><a href="https://triblive.com/opinion/letter-to-the-editor-social-connections-save-lives/" target="_blank" rel="noopener">Social Connections Save Lives</a></li>
+      <li><span class="out">The Pivot</span><a href="https://pivotbyyv.substack.com/p/is-the-op-ed-dead" target="_blank" rel="noopener">Is the Op-Ed Dead?</a></li>
+      <li><span class="out">America&rsquo;s Future</span><a href="https://americasfuture.org/what-is-willpower-and-how-should-you-use-it/" target="_blank" rel="noopener">What Is Willpower and How Should You Use It?</a></li>
+      <li><span class="out">America&rsquo;s Future</span><a href="https://americasfuture.org/3-productive-alternatives-to-embarrassment/" target="_blank" rel="noopener">3 Productive Alternatives to Embarrassment</a></li>
+    </ul>
+
+    <details class="more">
+      <summary>More writing — content &amp; craft</summary>
+      <ul class="list" style="margin-top:.6rem">
+        <li><span class="out">Visme</span><a href="https://visme.co/blog/visual-communication/" target="_blank" rel="noopener">Visual Communication</a></li>
+        <li><span class="out">Visme</span><a href="https://visme.co/blog/how-to-write-a-proposal/" target="_blank" rel="noopener">How to Write a Proposal</a></li>
+        <li><span class="out">Visme</span><a href="https://visme.co/blog/brand-strategy/" target="_blank" rel="noopener">Brand Strategy</a></li>
+        <li><span class="out">Discover Praxis</span><a href="https://discoverpraxis.com/blog/12670/deep-work-guide" target="_blank" rel="noopener">Deep Work Guide</a></li>
+        <li><span class="out">Discover Praxis</span><a href="https://discoverpraxis.com/blog/12116/thrive-in-career" target="_blank" rel="noopener">Thrive in Career</a></li>
+        <li><span class="out">Discover Praxis</span><a href="https://discoverpraxis.com/blog/10482/why-you-should-be-an-anti-reader" target="_blank" rel="noopener">Why You Should Be an Anti-Reader</a></li>
+        <li><span class="out">Discover Praxis</span><a href="https://discoverpraxis.com/blog/9978/the-four-tendencies" target="_blank" rel="noopener">The Four Tendencies</a></li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="forthcoming">
+    <div class="sec-head"><h2 class="section-title">Forthcoming</h2></div>
+    <p class="sec-note">In the pipeline with outlets.</p>
+    <ul class="list">
+      <li class="plain">Weaponizing Narratives: The Soft Power Arms Race</li>
+      <li class="plain">Who&rsquo;s Weird: Scapegoating Working People in the 2024 Election Cycle <span class="out" style="min-width:auto">Unherd</span></li>
+      <li class="plain">The Banality of Virtue: Rethinking Our Moral Framework <span class="out" style="min-width:auto">Washington Examiner</span></li>
+      <li class="plain">From Red Tape to Real Help: Mental Health Care for Those Who Need It Most <span class="out" style="min-width:auto">FEE</span></li>
+      <li class="plain">Make Psychedelics Healthy Again: Red Tape Is Killing Americans <span class="out" style="min-width:auto">Reason</span></li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2 class="section-title">Experience</h2></div>
+    <div class="exp">
+      <div class="job"><div class="when">Dec 2024 – present</div><div><h4>Contributor</h4><p class="org">Young Voices</p><p>Op-eds and investigative pieces in national outlets on harm reduction, mental health, and tech policy. 10+ media placements and broadcast appearances; grew a Substack readership past 200.</p></div></div>
+      <div class="job"><div class="when">Dec 2024 – present</div><div><h4>Communications Director</h4><p class="org">Education Reform Project</p><p>Ran a national media campaign that lifted mentions 50% in six months, secured 20+ placements, and built a grassroots strategy that mobilized 5,000+ community members.</p></div></div>
+      <div class="job"><div class="when">Aug 2023 – Dec 2024</div><div><h4>Communications Manager</h4><p class="org">Young People in Recovery · Pittsburgh</p><p>Directed national communications across 30 states and led media relations for voter-registration and recovery advocacy, managing program budgets over $1 million.</p></div></div>
+      <div class="job"><div class="when">Oct 2020 – Aug 2023</div><div><h4>Communications Coordinator</h4><p class="org">Young People in Recovery · Pittsburgh</p><p>Administered $2 million in grants and placed recovery and advocacy stories that raised program awareness.</p></div></div>
+      <div class="job"><div class="when">2017 – 2020</div><div><h4>Marketing Director</h4><p class="org">Praxis · Pittsburgh</p><p>Built content on career training and personal development, including bylined pieces on the Discover Praxis blog.</p></div></div>
+      <div class="job"><div class="when">2018 – 2021</div><div><h4>Content Strategist</h4><p class="org">Visme · Remote</p><p>Produced long-form blog content on visual communication, brand strategy, and proposal writing.</p></div></div>
+    </div>
+  </section>
+
+  <section id="media">
+    <div class="sec-head"><h2 class="section-title">Broadcast &amp; radio</h2></div>
+    <ul class="list">
+      <li><span class="out">KOA Denver</span><span>Mandy Connell Show — the policy stakes of harm reduction</span></li>
+      <li><span class="out">Bryan Hyde Show</span><span>Mental health and personal responsibility</span></li>
+      <li><span class="out">Moving Forward</span><span>Consumer choice and public policy</span></li>
+    </ul>
+  </section>
+
+  <section id="about-more">
+    <div class="two">
+      <div>
+        <div class="sec-head"><h2 class="section-title">Education</h2></div>
+        <ul class="list edu" style="margin-top:.4rem">
+          <li><b>MA, Clinical Mental Health Counseling</b><br><span>Indiana University of Pennsylvania · 2021</span></li>
+          <li><b>BS, Psychology</b><br><span>Penn State University</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sec-head"><h2 class="section-title">Skills</h2></div>
+        <ul class="skills" style="margin-top:.9rem">
+          <li>Data journalism and public-records reporting</li>
+          <li>Reproducible, source-hashed evidence packages</li>
+          <li>Media relations and press engagement</li>
+          <li>Grant writing and fund management</li>
+          <li>Strategic communications and public relations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="kick">Get in touch</div>
+    <h2 class="section-title" style="margin-top:.5rem">Contact</h2>
+    <div class="flinks">
+      <a href="mailto:brianjnuckols@gmail.com">brianjnuckols@gmail.com</a>
+      <a href="https://substack.com/@briannuckols" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/briannuckols13" target="_blank" rel="noopener">X</a>
+      <a href="https://briannuckols.com" target="_blank" rel="noopener">briannuckols.com</a>
+    </div>
+    <p class="fine">Pittsburgh, Pennsylvania. This portfolio is source-available and hosted on GitHub Pages; the three featured records are open-source repositories anyone can clone and re-run. Clinical and theoretical writing lives at <a href="https://briannuckols.com" target="_blank" rel="noopener">briannuckols.com</a>.</p>
+  </div>
+</footer>
+
+<script>
+  // theme toggle
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeBtn');
+    try{var saved=localStorage.getItem('bn-theme'); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+    btn.addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+      var next=cur==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem('bn-theme',next);}catch(e){}
+    });
+  })();
+  // journalism filter
+  (function(){
+    var chips=document.getElementById('chips'), cards=document.querySelectorAll('#jgrid .acard');
+    chips.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      chips.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});
+      b.classList.add('on');
+      var f=b.dataset.f;
+      cards.forEach(function(card){
+        var show=f==='all'||(' '+card.dataset.topic+' ').indexOf(' '+f+' ')>-1;
+        card.style.display=show?'':'none';
+      });
+    });
+  })();
+</script>
+</body>
+</html>

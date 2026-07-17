@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brian Nuckols — Journalism CV 2026</title>
+<meta name="description" content="Brian Nuckols — investigative journalism CV, 2026. Public-records and data reporting published as reproducible open-source packages.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235b4b8a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23fbfaf7' text-anchor='middle'%3EBN%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#fbfaf7; --card:#fff; --ink:#1a1a1a; --soft:#4a4a4a; --faint:#7d766a;
+    --rule:#d9d4c8; --rule-soft:#ece7dd; --accent:#5b4b8a; --chipbg:#f1ece2;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"Cascadia Code",Consolas,ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#14130e;--card:#1c1a14;--ink:#ece7dd;--soft:#b3aa99;--faint:#8a8272;
+      --rule:#37322a;--rule-soft:#2a2620;--accent:#a99ce8;--chipbg:#26221b}
+  }
+  :root[data-theme="dark"]{--paper:#14130e;--card:#1c1a14;--ink:#ece7dd;--soft:#b3aa99;--faint:#8a8272;
+    --rule:#37322a;--rule-soft:#2a2620;--accent:#a99ce8;--chipbg:#26221b}
+  :root[data-theme="light"]{--paper:#fbfaf7;--card:#fff;--ink:#1a1a1a;--soft:#4a4a4a;--faint:#7d766a;
+    --rule:#d9d4c8;--rule-soft:#ece7dd;--accent:#5b4b8a;--chipbg:#f1ece2}
+  *{box-sizing:border-box}
+  html{font-size:16px}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.5;
+    -webkit-font-smoothing:antialiased}
+  .sheet{max-width:52rem;margin:0 auto;padding:2.6rem 1.5rem 4rem}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:var(--accent);text-decoration:underline}
+  .bar{display:flex;gap:.6rem;justify-content:flex-end;margin-bottom:.8rem}
+  .bar button,.bar a{font-family:var(--sans);font-size:.8rem;cursor:pointer;border:1px solid var(--rule);
+    background:var(--card);color:var(--soft);border-radius:999px;padding:.4rem .8rem;text-decoration:none}
+  .bar a:hover,.bar button:hover{border-color:var(--accent);color:var(--ink)}
+
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:1.4rem}
+  h1{font-size:2.5rem;letter-spacing:-.015em;margin:0 0 .2rem;font-weight:600}
+  .role{font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:.02em;color:var(--accent)}
+  .contact{font-family:var(--sans);font-size:.82rem;color:var(--soft);margin-top:.6rem;display:flex;
+    flex-wrap:wrap;gap:.35rem .9rem}
+  .summary{font-size:1.02rem;color:var(--soft);margin:1.1rem 0 0;max-width:60ch}
+
+  h2{font-family:var(--sans);font-size:.82rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink);margin:2rem 0 .1rem;padding-bottom:.35rem}
+  h2::after{content:'';display:block;height:5px;width:58px;margin-top:.4rem;background:var(--accent);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E") repeat-x;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E") repeat-x}
+
+  .inv{padding:.85rem 0;border-bottom:1px solid var(--rule-soft)}
+  .inv .h{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+  .inv .t{font-size:1.12rem;font-weight:600}
+  .inv .src{font-family:var(--sans);font-size:.76rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+  .inv p{margin:.3rem 0 .35rem;font-size:.94rem;color:var(--soft)}
+  .inv .figs{font-family:var(--sans);font-size:.76rem;color:var(--faint);font-variant-numeric:tabular-nums}
+  .inv .lk{font-family:var(--sans);font-size:.8rem;margin-top:.35rem}
+  .inv .lk a{color:var(--accent)}
+  .inv .lk span{color:var(--faint);margin:0 .35rem}
+
+  ul.clips{list-style:none;padding:0;margin:.3rem 0 0}
+  ul.clips li{padding:.5rem 0;border-bottom:1px solid var(--rule-soft);display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap}
+  ul.clips .src{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);min-width:10.5rem}
+  ul.clips .ti{font-size:1rem}
+
+  .job{padding:.65rem 0;border-bottom:1px solid var(--rule-soft);display:grid;grid-template-columns:9rem 1fr;gap:1rem}
+  .job .when{font-family:var(--sans);font-size:.76rem;color:var(--faint);padding-top:.15rem}
+  .job .ti{font-size:1.02rem;font-weight:600}
+  .job .org{font-family:var(--sans);font-size:.8rem;color:var(--accent)}
+  .job p{margin:.2rem 0 0;font-size:.9rem;color:var(--soft)}
+  @media (max-width:560px){.job{grid-template-columns:1fr;gap:.15rem}.job .when{order:-1}}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2.2rem}
+  @media (max-width:560px){.two{grid-template-columns:1fr}}
+  .two h2{margin-top:1.4rem}
+  ul.plain{list-style:none;padding:0;margin:.3rem 0 0}
+  ul.plain li{font-size:.94rem;padding:.28rem 0;color:var(--soft)}
+  ul.plain li b{color:var(--ink);font-weight:600}
+  .skills li{position:relative;padding-left:1rem}
+  .skills li::before{content:'';position:absolute;left:0;top:.6em;width:.42rem;height:.42rem;border-radius:50%;background:var(--accent)}
+
+  footer{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--rule);
+    font-family:var(--sans);font-size:.78rem;color:var(--faint)}
+  footer .pill{font-family:var(--mono);background:var(--chipbg);border-radius:999px;padding:.25rem .6rem;color:var(--faint)}
+
+  @media print{
+    :root{--paper:#fff;--card:#fff;--ink:#111;--soft:#333;--faint:#555;--rule:#ccc;--rule-soft:#e2e2e2;--accent:#3a2e63}
+    .bar{display:none}
+    body{font-size:11.5pt}
+    .sheet{max-width:none;padding:0}
+    h1{font-size:22pt}
+    .inv,.job,ul.clips li{break-inside:avoid}
+    a{color:#111;text-decoration:none}
+    h2{margin-top:14pt}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="bar">
+    <a href="index.html">← Portfolio</a>
+    <button onclick="window.print()">Print / Save as PDF</button>
+    <button id="themeBtn" aria-label="Toggle theme">◐</button>
+  </div>
+
+  <header class="top">
+    <h1>Brian Nuckols</h1>
+    <div class="role">Investigative Journalist · Pittsburgh, Pennsylvania</div>
+    <div class="contact">
+      <a href="mailto:brianjnuckols@gmail.com">brianjnuckols@gmail.com</a>
+      <a href="https://bnuckols13.github.io/" target="_blank" rel="noopener">bnuckols13.github.io</a>
+      <a href="https://substack.com/@briannuckols" target="_blank" rel="noopener">Substack</a>
+      <a href="https://x.com/briannuckols13" target="_blank" rel="noopener">X / @briannuckols13</a>
+      <a href="https://briannuckols.com" target="_blank" rel="noopener">briannuckols.com</a>
+    </div>
+    <p class="summary">Investigative journalist working from public records and data. I publish accountability stories alongside open-source packages that let a reader re-derive every figure from hashed source documents with one command. Bylines in Public Source, the West Hills Gazette, Jacobin, Pirate Wires, and the Seattle Times.</p>
+  </header>
+
+  <h2>Reproducible investigations · 2025</h2>
+
+  <div class="inv">
+    <div class="h"><span class="t">The Pittsburgh Water Deliberation Record</span><span class="src">Public Source · Dec 2025</span></div>
+    <p>Coded two years of a public water board's votes from the minutes, then confirmed the pattern with residents, utility officials, and independent experts. At the first meeting after the story ran, the board asked about 40 questions, roughly seven times its two-year average, and issued a stop-work order.</p>
+    <div class="figs">228 votes · 0 dissents · $871.25M authorized · 69% peer unanimity</div>
+    <div class="lk"><a href="https://bnuckols13.github.io/pittsburgh-water-deliberation-record/" target="_blank" rel="noopener">Reproducible record</a><span>·</span><a href="https://www.publicsource.org/pittsburgh-water-board-unanimous-votes-oversight/" target="_blank" rel="noopener">Published story</a></div>
+  </div>
+
+  <div class="inv">
+    <div class="h"><span class="t">The Pittsburgh Inclusionary Zoning Record</span><span class="src">Public Source · Sept 2025</span></div>
+    <p>Six years into the policy, the city had never published a count of the affordable units the rule produced, so I built the count and separated what is finished from what is merely claimed.</p>
+    <div class="figs">35 built · 16 under construction · 100+ proposed · 3 projects downsized below the mandate line</div>
+    <div class="lk"><a href="https://bnuckols13.github.io/pittsburgh-inclusionary-zoning-record/" target="_blank" rel="noopener">Reproducible record</a><span>·</span><a href="https://www.publicsource.org/pittsburgh-debates-gainey-inclusionary-zoning-proposal/" target="_blank" rel="noopener">Published story</a></div>
+  </div>
+
+  <div class="inv">
+    <div class="h"><span class="t">The Pittsburgh Airport Terminal Record</span><span class="src">West Hills Gazette · Oct 2025</span></div>
+    <p>The Airport Authority named two grants at its ribbon-cutting and would not total its debt. I reconstructed it from the audited 2024 financials.</p>
+    <div class="figs">cost +54% · $1.25B bonds outstanding · $2.5B debt service to 2056 · built for 15M / 9.95M used</div>
+    <div class="lk"><a href="https://bnuckols13.github.io/pittsburgh-airport-terminal-record/" target="_blank" rel="noopener">Reproducible record</a><span>·</span><a href="https://westhillsgazette.com/pittsburgh-airport-cuts-ribbon-on-1-75-billion-terminal/" target="_blank" rel="noopener">Published story</a></div>
+  </div>
+
+  <h2>Selected journalism</h2>
+  <ul class="clips">
+    <li><span class="src">Public Source</span><a class="ti" href="https://www.publicsource.org/pittsburgh-water-board-unanimous-votes-oversight/" target="_blank" rel="noopener">Two years, zero &lsquo;no&rsquo; votes on Pittsburgh Water board as rate hike looms</a></li>
+    <li><span class="src">Public Source</span><a class="ti" href="https://www.publicsource.org/pittsburgh-water-board-transparency-rate-hike/" target="_blank" rel="noopener">Pittsburgh Water board asks questions after transparency investigation</a></li>
+    <li><span class="src">Public Source</span><a class="ti" href="https://www.publicsource.org/pittsburgh-regional-transit-avoids-service-cuts-waterfront/" target="_blank" rel="noopener">Routes spared, but upgrades nixed in Pittsburgh Regional Transit funding fix</a></li>
+    <li><span class="src">West Hills Gazette</span><a class="ti" href="https://westhillsgazette.com/pittsburgh-airport-cuts-ribbon-on-1-75-billion-terminal/" target="_blank" rel="noopener">Pittsburgh Airport cuts ribbon on $1.75 billion terminal</a></li>
+    <li><span class="src">Jacobin</span><a class="ti" href="https://jacobin.com/author/brian-nuckols" target="_blank" rel="noopener">The Curious Case of Steve Bannon&rsquo;s Tactics</a></li>
+    <li><span class="src">Pirate Wires</span><a class="ti" href="https://www.piratewires.com/p/100-years-477-billion-new-yorks-second-avenue-subway-disaster" target="_blank" rel="noopener">100 Years, $4.77 Billion: New York&rsquo;s Second Avenue Subway Disaster</a></li>
+    <li><span class="src">Seattle Times</span><a class="ti" href="https://www.seattletimes.com/author/brian-nuckols/" target="_blank" rel="noopener">When a chatbot causes harm, we need to impose consequences (op-ed)</a></li>
+  </ul>
+
+  <h2>Essays &amp; commentary</h2>
+  <ul class="clips">
+    <li><span class="src">Free the People</span><a class="ti" href="https://freethepeople.org/fda-kills-menthol-ban-a-triumph-for-harm-reduction/" target="_blank" rel="noopener">FDA Kills Menthol Ban: A Triumph for Harm Reduction</a></li>
+    <li><span class="src">Free the People</span><a class="ti" href="https://freethepeople.org/the-overreach-of-flavor-bans-why-authority-doesnt-equal-policy-wisdom/" target="_blank" rel="noopener">The Overreach of Flavor Bans: Why Authority Doesn&rsquo;t Equal Policy Wisdom</a></li>
+    <li><span class="src">Tribune-Review</span><a class="ti" href="https://triblive.com/opinion/letter-to-the-editor-social-connections-save-lives/" target="_blank" rel="noopener">Social Connections Save Lives</a></li>
+    <li><span class="src">The Pivot</span><a class="ti" href="https://pivotbyyv.substack.com/p/is-the-op-ed-dead" target="_blank" rel="noopener">Is the Op-Ed Dead?</a></li>
+    <li><span class="src">America&rsquo;s Future</span><a class="ti" href="https://americasfuture.org/what-is-willpower-and-how-should-you-use-it/" target="_blank" rel="noopener">What Is Willpower and How Should You Use It?</a></li>
+    <li><span class="src">America&rsquo;s Future</span><a class="ti" href="https://americasfuture.org/3-productive-alternatives-to-embarrassment/" target="_blank" rel="noopener">3 Productive Alternatives to Embarrassment</a></li>
+  </ul>
+
+  <h2>Experience</h2>
+  <div class="job"><div class="when">Dec 2024 – present</div><div><div class="ti">Contributor</div><div class="org">Young Voices</div><p>Op-eds and investigative pieces in national outlets on harm reduction, mental health, and tech policy. 10+ media placements and broadcast appearances.</p></div></div>
+  <div class="job"><div class="when">Dec 2024 – present</div><div><div class="ti">Communications Director</div><div class="org">Education Reform Project</div><p>National media campaign that lifted mentions 50% in six months; 20+ placements; grassroots strategy that mobilized 5,000+ community members.</p></div></div>
+  <div class="job"><div class="when">Aug 2023 – Dec 2024</div><div><div class="ti">Communications Manager</div><div class="org">Young People in Recovery</div><p>Directed national communications across 30 states and led media relations for recovery advocacy, managing program budgets over $1 million.</p></div></div>
+  <div class="job"><div class="when">Oct 2020 – Aug 2023</div><div><div class="ti">Communications Coordinator</div><div class="org">Young People in Recovery</div><p>Administered $2 million in grants and placed recovery and advocacy stories that raised program awareness.</p></div></div>
+  <div class="job"><div class="when">2017 – 2020</div><div><div class="ti">Marketing Director</div><div class="org">Praxis</div><p>Built content on career training and personal development, including bylined pieces on the Discover Praxis blog.</p></div></div>
+  <div class="job"><div class="when">2018 – 2021</div><div><div class="ti">Content Strategist</div><div class="org">Visme</div><p>Long-form blog content on visual communication, brand strategy, and proposal writing.</p></div></div>
+
+  <div class="two">
+    <div>
+      <h2>Broadcast &amp; radio</h2>
+      <ul class="plain">
+        <li><b>Mandy Connell Show</b> · KOA Denver — harm-reduction policy</li>
+        <li><b>Bryan Hyde Show</b> — mental health and responsibility</li>
+        <li><b>Moving Forward</b> — consumer choice and public policy</li>
+      </ul>
+      <h2>Education</h2>
+      <ul class="plain">
+        <li><b>MA, Clinical Mental Health Counseling</b><br>Indiana University of Pennsylvania · 2021</li>
+        <li><b>BS, Psychology</b><br>Penn State University</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Skills</h2>
+      <ul class="plain skills">
+        <li>Data journalism and public-records reporting</li>
+        <li>Reproducible, source-hashed evidence packages</li>
+        <li>Source development and interviewing</li>
+        <li>Media relations and press engagement</li>
+        <li>Grant writing and fund management</li>
+        <li>Strategic communications and public relations</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    Pittsburgh, Pennsylvania · <span class="pill">the three records reproduce with python check.py</span> · Full portfolio at <a href="https://bnuckols13.github.io/">bnuckols13.github.io</a>
+  </footer>
+
+</div>
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeBtn');
+    try{var s=localStorage.getItem('bn-theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+    btn.addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+      var n=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',n);
+      try{localStorage.setItem('bn-theme',n);}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
